@@ -520,7 +520,7 @@ function buildZodPrimitiveInternal({
     if (identifierName === "Map" && typeNode.typeArguments) {
       return buildZodSchema(
         z,
-        "map",
+        "record",
         [
           buildZodPrimitive({
             z,

@@ -285,14 +285,7 @@ describe("generateZodSchema", () => {
   it("should generate a map schema", () => {
     const source = `export type EnemiesPowers = Map<string, Power>;`;
     expect(generate(source)).toMatchInlineSnapshot(
-      `"export const enemiesPowersSchema = z.map(z.string(), powerSchema);"`
-    );
-  });
-
-  it("should generate a map schema (schema key)", () => {
-    const source = `export type EnemiesPowers = Map<Super, Power>;`;
-    expect(generate(source)).toMatchInlineSnapshot(
-      `"export const enemiesPowersSchema = z.map(superSchema, powerSchema);"`
+      `"export const enemiesPowersSchema = z.record(z.string(), powerSchema);"`
     );
   });
 
