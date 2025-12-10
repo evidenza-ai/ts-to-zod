@@ -282,6 +282,20 @@ describe("generateZodSchema", () => {
     );
   });
 
+  it("should generate a map schema", () => {
+    const source = `export type EnemiesPowers = Map<string, Power>;`;
+    expect(generate(source)).toMatchInlineSnapshot(
+      `"export const enemiesPowersSchema = z.map(z.string(), powerSchema);"`
+    );
+  });
+
+  it("should generate a map schema (schema key)", () => {
+    const source = `export type EnemiesPowers = Map<Super, Power>;`;
+    expect(generate(source)).toMatchInlineSnapshot(
+      `"export const enemiesPowersSchema = z.map(superSchema, powerSchema);"`
+    );
+  });
+
   it("should generate a set schema", () => {
     const source = `export type EnemiesPowers = Set<string>;`;
     expect(generate(source)).toMatchInlineSnapshot(
